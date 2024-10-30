@@ -96,7 +96,6 @@ def to_next_layer_partition_batched(cycles, Abw, current_layer, NN,
     
     ## query hyps, only get rows which intersect, create idx map
     inter_hyps_idx = torch.unique(hyp_vert_cyc_idx[:,0])
-    print(inter_hyps_idx)
     hyps = NN.layers[current_layer].get_weights(row_idx=inter_hyps_idx).cpu()
     hyp_idx_map = torch.ones(n_hyps,dtype=torch.int64)*(hyps.shape[0]+100) ## initialize with idx out of range
     hyp_idx_map[inter_hyps_idx] = torch.arange(hyps.shape[0], dtype=torch.int64)
