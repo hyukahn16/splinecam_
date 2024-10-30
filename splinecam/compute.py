@@ -116,7 +116,7 @@ def to_next_layer_partition_batched(cycles, Abw, current_layer, NN,
     
 ###     get intersection with all cycle edges
     endpoints = []
-    for target_cycle_idx in tqdm.tqdm(uniq_cycle_idx, desc='Iterating regions'):
+    for target_cycle_idx in uniq_cycle_idx:
         
         vert_mask = cyc_idx==target_cycle_idx
         hyp_mask = hyp_vert_cyc_idx[::2,-1] == target_cycle_idx
@@ -202,7 +202,7 @@ def get_partitions_with_db(
             out_Abw = torch.zeros(len(out_idx),Wb.shape[0],Abw.shape[-1], device='cpu', dtype=torch.float32)
 
             start = 0
-            for in_batch in tqdm.tqdm(dloader,desc='Get Abw',total=len(dloader)):
+            for in_batch in dloader:
 
                 end = start+in_batch.shape[0]
 

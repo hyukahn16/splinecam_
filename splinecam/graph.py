@@ -509,7 +509,7 @@ def create_poly_hyp_graph(poly, hyps, q=None, hyp_endpoints=None, dtype=torch.fl
     new_node_start = new_node_idx[-1]+1
     new_node_idx = torch.arange(new_node_start,new_node_start+v.shape[0]).type(torch.int)
 
-    for ii,each_hyp in tqdm.tqdm(enumerate(uniq_hyp_idx), desc='iterating hyps', total=len(uniq_hyp_idx)):
+    for ii,each_hyp in enumerate(uniq_hyp_idx):
 
 
         mask = torch.logical_or(comb_idx[:,0] == each_hyp, comb_idx[:,1] == each_hyp)
@@ -704,7 +704,7 @@ def to_next_layer_partition(cycles, Abw, current_layer, NN, dtype=torch.float64,
     new_cyc_idx = []
     
     ## for each intersected cycle, find new regions
-    for target_cycle_idx in tqdm.tqdm(uniq_cycle_idx):
+    for target_cycle_idx in uniq_cycle_idx:
         
         vert_mask = cyc_idx==target_cycle_idx
         hyp_mask = hyp_vert_cyc_idx[::2,-1] == target_cycle_idx
@@ -903,7 +903,7 @@ def to_next_layer_partition_batched(cycles, Abw, current_layer, NN,
     new_cyc_idx = []
     
     ## for each intersected cycle, find new regions
-    for target_cycle_idx in tqdm.tqdm(uniq_cycle_idx, desc='Iterating regions'):
+    for target_cycle_idx in uniq_cycle_idx:
         
         vert_mask = cyc_idx==target_cycle_idx
         hyp_mask = hyp_vert_cyc_idx[::2,-1] == target_cycle_idx
