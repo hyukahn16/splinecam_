@@ -151,7 +151,7 @@ def get_partitions_with_db(
 
 
     for current_layer in range(1,len(NN.layers)-1):
-        print(f'Current layer {current_layer}')
+        # print(f'Current layer {current_layer}')
 
         out_cyc,out_idx = graph.to_next_layer_partition_batched(
             cycles = out_cyc,

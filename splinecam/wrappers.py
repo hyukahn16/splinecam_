@@ -341,7 +341,7 @@ class model_wrapper(object):
         
         for layer,name in zip(layers,layer_names):
             
-            print(f'Wrapping layer {name}...')
+            # print(f'Wrapping layer {name}...')
             
             if type(layer) == torch.nn.modules.linear.Linear:
                 new_layers.append(linear(layer,device=self.device,dtype=self.dtype))
